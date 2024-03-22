@@ -302,10 +302,12 @@
 // }
 
 import 'dart:developer';
+import 'dart:io';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_netflix/controller/netflix_providers.dart';
+import 'package:my_netflix/services/netflix_services.dart';
 import 'package:my_netflix/utilites/netflix_url.dart';
 import 'package:my_netflix/view/pages/fav_listview.dart';
 import 'package:my_netflix/view/pages/movie_cardinnerview.dart';
@@ -314,7 +316,7 @@ import 'package:my_netflix/view/pages/upcoming_movie_list.dart';
 import 'package:my_netflix/view/widgets/movie_card_widget.dart';
 
 class MovieApp extends ConsumerWidget {
-  const MovieApp({Key? key});
+  const MovieApp({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -322,7 +324,9 @@ class MovieApp extends ConsumerWidget {
       appBar: AppBar(
         elevation: 0,
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            exit(0);
+          },
           icon: const Icon(Icons.arrow_back_ios_new),
         ),
         centerTitle: true,
@@ -372,8 +376,17 @@ class MovieApp extends ConsumerWidget {
                             onTap: () => Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) =>
-                                        const MoviecardInnerView())),
+                                    builder: (context) => MoviecardInnerView(
+                                        context: context,
+                                        img: data.results[index].backdropPath
+                                            .toString(),
+                                        title: data.results[index].title,
+                                        subtitle: data.results[index].overview,
+                                        relesedate: data
+                                            .results[index].releaseDate
+                                            .toString(),
+                                        rating: data.results[index].voteAverage
+                                            .toString()))),
                             child: Container(
                               width: 200,
                               height: 300,
@@ -483,8 +496,19 @@ class MovieApp extends ConsumerWidget {
             },
             error: (error, stackTrace) {
               log('error');
-              return const Center(
-                child: Text('Something went wrong'),
+              return Center(
+                child: Column(
+                  children: [
+                    const Text('Something went wrong,try again'),
+                    IconButton(
+                        onPressed: () {
+                          UpcommingServices.getPostUpcoming();
+                          PopularServices.getPostPopular();
+                          TrendingnowServices.fetchPostTranding();
+                        },
+                        icon: const Icon(Icons.refresh))
+                  ],
+                ),
               );
             },
             loading: () => const Center(

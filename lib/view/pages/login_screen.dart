@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:my_netflix/view/pages/home_screen.dart';
+import 'package:my_netflix/view/widgets/logintextfeild_widget.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key});
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -82,37 +83,6 @@ class LoginScreen extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
-
-class TextFieldWidget extends StatelessWidget {
-  final String labelText;
-  final String hintText;
-  final IconData prefixIcon;
-  final Widget? suffixIcon;
-  final bool obscureText;
-
-  const TextFieldWidget({
-    Key? key,
-    required this.labelText,
-    required this.hintText,
-    required this.prefixIcon,
-    this.suffixIcon,
-    this.obscureText = false,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      decoration: InputDecoration(
-        labelText: labelText,
-        hintText: hintText,
-        border: const OutlineInputBorder(),
-        prefixIcon: Icon(prefixIcon),
-        suffixIcon: suffixIcon,
-      ),
-      obscureText: obscureText,
     );
   }
 }

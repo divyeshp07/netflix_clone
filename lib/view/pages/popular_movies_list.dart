@@ -53,8 +53,16 @@ class PopuMoGridlist extends ConsumerWidget {
                           onTap: () => Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) =>
-                                    const MoviecardInnerView(),
+                                builder: (context) => MoviecardInnerView(
+                                  context: context,
+                                  img: data.results[index].posterPath,
+                                  rating: data.results[index].voteAverage
+                                      .toString(),
+                                  relesedate: data.results[index].releaseDate
+                                      .toString(),
+                                  subtitle: data.results[index].overview,
+                                  title: data.results[index].title,
+                                ),
                               )),
                           child: Container(
                             width: 160,
@@ -69,6 +77,7 @@ class PopuMoGridlist extends ConsumerWidget {
                             ),
                             child: ListTile(
                                 trailing: FloatingActionButton.small(
+                              heroTag: 'popularfav',
                               onPressed: () {},
                               child: Icon(Icons.favorite),
                             )),

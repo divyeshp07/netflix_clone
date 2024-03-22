@@ -28,7 +28,14 @@ class MovieCard extends ConsumerWidget {
                   onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const MoviecardInnerView(),
+                      builder: (context) => MoviecardInnerView(
+                          img: data.results[index].posterPath,
+                          title: data.results[index].title,
+                          subtitle: data.results[index].overview,
+                          relesedate:
+                              data.results[index].releaseDate.toString(),
+                          rating: data.results[index].voteAverage.toString(),
+                          context: context),
                     ),
                   ),
                   child: Container(
