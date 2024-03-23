@@ -53,13 +53,13 @@ class FavorateMovielist extends StatelessWidget {
                                 style: TextStyle(fontSize: 25),
                               ),
                               SizedBox(
-                                width: 170,
+                                width: 150,
                               ),
                               IconButton(
                                   onPressed: () {},
                                   icon: Icon(
-                                    Icons.delete,
-                                    size: 30,
+                                    Icons.cancel,
+                                    size: 25,
                                   ))
                             ],
                           ),

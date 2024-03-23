@@ -75,12 +75,6 @@ class PopuMoGridlist extends ConsumerWidget {
                                   fit: BoxFit.cover),
                               borderRadius: BorderRadius.circular(12),
                             ),
-                            child: ListTile(
-                                trailing: FloatingActionButton.small(
-                              heroTag: 'popularfav',
-                              onPressed: () {},
-                              child: Icon(Icons.favorite),
-                            )),
                           ),
                         ),
                         const SizedBox(
@@ -88,7 +82,7 @@ class PopuMoGridlist extends ConsumerWidget {
                         ),
                         Text(
                           data.results[index].title,
-                          maxLines: 2, // Adjust the number of lines as needed
+                          maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: const TextStyle(fontSize: 15),
                         ),

@@ -38,7 +38,7 @@ class MoviecardInnerView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 Row(
@@ -86,14 +86,27 @@ class MoviecardInnerView extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        Row(
+                          children: [
+                            Text(
+                              title,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            ),
+                            const Spacer(),
+                            Text('$rating⭐',
+                                style: const TextStyle(
+                                    fontSize: 18, color: Colors.white)),
+                          ],
+                        ),
                         Text(
-                          title,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
+                          relesedate,
                           style: const TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white),
+                              fontSize: 12, color: Colors.white),
                         ),
                         Text(
                           subtitle,
@@ -101,21 +114,8 @@ class MoviecardInnerView extends StatelessWidget {
                           // overflow: TextOverflow.ellipsis,
                           style: const TextStyle(
                             fontSize: 18,
-                            color: Colors.white,
+                            color: Colors.white60,
                           ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              relesedate,
-                              style: const TextStyle(
-                                  fontSize: 12, color: Colors.white),
-                            ),
-                            Text('$rating⭐',
-                                style: const TextStyle(
-                                    fontSize: 12, color: Colors.white)),
-                          ],
                         ),
                       ],
                     ),
